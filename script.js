@@ -1,49 +1,33 @@
-/* script.js
-   - Loading screen (5s on first visit using sessionStorage)
-   - Optional audio play if available and allowed by browser
-   - Video thumbnails inject YouTube iframe on click/Enter
+/* script.js - updated
+   - Loading screen: shows video background and chains; shows for 5s on first visit (sessionStorage)
+   - Video iframes embedded directly 
+   - Interactive elements have thin red/grey border via .interactive
 */
 
 const LOADING_DURATION = 5000; // ms
-const LOADING_SOUND_ENABLED = true; // set to false to disable sound
+const LOADING_SOUND_ENABLED = false; // keep loading silent by default
 
 document.addEventListener('DOMContentLoaded', () => {
   const loadingScreen = document.getElementById('loading-screen');
   const mainContent = document.getElementById('main-content');
-  const loadingAudio = document.getElementById('loading-audio');
+  const loadingVideo = document.getElementById('loading-video');
 
-  const firstLoad = !sessionStorage.getItem('subcage_loaded');
+  const firstLoad = !sessionStorage.getItem('subcage_loaded_v2');
 
-  if (LOADING_SOUND_ENABLED && loadingAudio) {
-    // Try to play; browsers might block autoplay without user gesture
-    loadingAudio.volume = 0.9;
-    const tryPlay = loadingAudio.play();
-    if (tryPlay && tryPlay.catch) tryPlay.catch(() => {/* autoplay blocked */});
+  if (LOADING_SOUND_ENABLED && loadingVideo) {
+    loadingVideo.muted = false;
+    loadingVideo.volume = 0.9;
   }
 
   if (firstLoad) {
+    // show loading for LOADING_DURATION, then hide
     setTimeout(() => {
       hideLoading();
-      sessionStorage.setItem('subcage_loaded', '1');
+      sessionStorage.setItem('subcage_loaded_v2', '1');
     }, LOADING_DURATION);
   } else {
-    // Hide immediately for subsequent visits
     hideLoading();
   }
-
-  // Video thumbnail behavior
-  const thumbs = document.querySelectorAll('.video-thumb');
-  thumbs.forEach(thumb => {
-    const parent = thumb.closest('.video-box');
-    const embed = parent.getAttribute('data-embed');
-    thumb.addEventListener('click', () => injectIframe(parent, embed));
-    thumb.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        injectIframe(parent, embed);
-      }
-    });
-  });
 });
 
 function hideLoading(){
@@ -51,21 +35,9 @@ function hideLoading(){
   const mainContent = document.getElementById('main-content');
   if (loadingScreen) loadingScreen.style.display = 'none';
   if (mainContent) mainContent.classList.remove('hidden');
-  // stop audio if playing
-  const loadingAudio = document.getElementById('loading-audio');
-  if (loadingAudio && !loadingAudio.paused) {
-    try { loadingAudio.pause(); loadingAudio.currentTime = 0; } catch(e){}
+  // pause loading video if present
+  const loadingVideo = document.getElementById('loading-video');
+  if (loadingVideo && !loadingVideo.paused) {
+    try{ loadingVideo.pause(); loadingVideo.currentTime = 0; } catch(e){}
   }
-}
-
-function injectIframe(container, embedUrl){
-  if (!embedUrl) return;
-  const iframe = document.createElement('iframe');
-  iframe.src = embedUrl.includes('?') ? embedUrl + '&autoplay=1' : embedUrl + '?autoplay=1';
-  iframe.setAttribute('frameborder', '0');
-  iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-  iframe.setAttribute('allowfullscreen', 'true');
-  // Empty container and append
-  container.innerHTML = '';
-  container.appendChild(iframe);
 }

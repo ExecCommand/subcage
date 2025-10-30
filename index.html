@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SUBCAGE</title>
+
+  <!-- Google Font: Roboto Condensed -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Main script (deferred) -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Loading screen: shows only on first visit (5s) -->
+  <div id="loading-screen" aria-hidden="false">
+    <div class="chains" aria-hidden="true"></div>
+    <div class="chains chains2" aria-hidden="true"></div>
+    <!-- Loading logo (cloudinary) -->
+    <img class="loading-logo" id="loading-logo" src="https://res.cloudinary.com/dzvpg0h7y/image/upload/v1761810001/logo_no_sfondo_utwyyy.png" alt="Subcage logo">
+    <!-- Optional audio: place file in assets/industrial.mp3 if you want sound -->
+    <audio id="loading-audio" preload="auto">
+      <source src="assets/industrial.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <!-- Main content (hidden until loading finishes) -->
+  <main id="main-content" class="hidden" role="main">
+    <!-- Header: logo centered horizontally at top -->
+    <header class="site-header">
+      <img class="main-logo" src="https://res.cloudinary.com/dzvpg0h7y/image/upload/v1761810001/logo_no_sfondo_utwyyy.png" alt="Subcage logo">
+    </header>
+
+    <!-- Event block -->
+    <section class="evento" aria-labelledby="prossimo-evento">
+      <h1 id="prossimo-evento" class="evento-title glitch" data-text="PROSSIMO EVENTO">PROSSIMO EVENTO</h1>
+      <h2 class="evento-name">SUBCAGE // HARD RITUAL</h2>
+
+      <!-- Iscrizione: replace href when ready -->
+      <a href="<!-- INSERISCI LINK ISCRIZIONE -->" class="evento-btn interactive glitch" data-text="ISCRIVITI">ISCRIVITI</a>
+
+      <p class="evento-note">Dress code: black industrial / no flash / no phones inside</p>
+    </section>
+
+    <!-- Videos: 3 thumbnail boxes that inject YouTube iframe on click -->
+    <section class="videos" aria-label="Video">
+      <div class="video-box interactive" data-embed="https://www.youtube.com/embed/GSyqxI52BUc">
+        <div class="video-thumb" tabindex="0" role="button" aria-pressed="false" aria-label="Apri video 1">
+          <div class="yt-overlay">▶</div>
+          <img src="https://img.youtube.com/vi/GSyqxI52BUc/maxresdefault.jpg" alt="Anteprima video 1">
+        </div>
+      </div>
+
+      <div class="video-box interactive" data-embed="https://www.youtube.com/embed/-d84Swr65d0">
+        <div class="video-thumb" tabindex="0" role="button" aria-pressed="false" aria-label="Apri video 2">
+          <div class="yt-overlay">▶</div>
+          <img src="https://img.youtube.com/vi/-d84Swr65d0/maxresdefault.jpg" alt="Anteprima video 2">
+        </div>
+      </div>
+
+      <div class="video-box interactive" data-embed="https://www.youtube.com/embed/HXW7j3NYYKA">
+        <div class="video-thumb" tabindex="0" role="button" aria-pressed="false" aria-label="Apri video 3">
+          <div class="yt-overlay">▶</div>
+          <img src="https://img.youtube.com/vi/HXW7j3NYYKA/maxresdefault.jpg" alt="Anteprima video 3">
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacts -->
+    <section class="contacts" aria-label="Contatti">
+      <a class="contact-btn interactive glitch" data-text="YOUTUBE" href="https://www.youtube.com/@subcagesecrets" target="_blank" rel="noopener">YOUTUBE</a>
+      <a class="contact-btn interactive glitch" data-text="INSTAGRAM" href="https://www.instagram.com/subcagesecret/" target="_blank" rel="noopener">INSTAGRAM</a>
+      <a class="contact-btn interactive glitch" data-text="BOOKING" href="mailto:Subcagesecret@gmail.com">BOOKING</a>
+    </section>
+
+    <!-- Regolamento (lungo paragrafo, testo più piccolo) -->
+    <section class="regolamento" aria-labelledby="regolamento-title">
+      <h3 id="regolamento-title">REGOLAMENTO</h3>
+      <p>
+        SUBCAGE nasce per portare quello che manca nel nostro territorio,
+        “SUB” = sotto “CAGE” = gabbia, abbiamo scelto questo nome perché siamo una subcultura di persone che protegge e difende dei valori che molto spesso si perdono portando anche innovazione.
+        È un evento che si tiene una volta al mese promuovendo e dando forza agli artisti del territorio emergenti e non, per far accrescere la vera cultura techno che si respira a Berlino, così da difendere sia la musica che i veri principi di rispetto e convivenza tra luogo e pubblico.
+        La serietà musicale è una delle nostre migliori qualità: Techno Raw, Hypnotik, Hardgroove e un pizzico di Hard, i bassi movimentati e profondi con ritmi audaci e calzanti.
+      </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>powered by @emanuele.meneghetti</p>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,46 +1,43 @@
-// script.js - loading logic and accessibility
-// - Shows loading screen with video for first visit (5s). Uses sessionStorage to show only once.
-// - After hide, main content is displayed and video paused for performance.
+/* script.js - updated
+   - Loading screen: shows video background and chains; shows for 5s on first visit (sessionStorage)
+   - Video iframes embedded directly 
+   - Interactive elements have thin red/grey border via .interactive
+*/
 
-const LOADING_KEY = 'subcage_loaded_v3';
-const LOADING_TIME = 5000; // milliseconds
+const LOADING_DURATION = 5000; // ms
+const LOADING_SOUND_ENABLED = false; // keep loading silent by default
 
 document.addEventListener('DOMContentLoaded', () => {
   const loadingScreen = document.getElementById('loading-screen');
+  const mainContent = document.getElementById('main-content');
   const loadingVideo = document.getElementById('loading-video');
-  const mainContent = document.getElementById('main-content') || document.getElementById('main-content'); // defensive
 
-  const firstLoad = !sessionStorage.getItem(LOADING_KEY);
+  const firstLoad = !sessionStorage.getItem('subcage_loaded_v2');
+
+  if (LOADING_SOUND_ENABLED && loadingVideo) {
+    loadingVideo.muted = false;
+    loadingVideo.volume = 0.9;
+  }
 
   if (firstLoad) {
+    // show loading for LOADING_DURATION, then hide
     setTimeout(() => {
       hideLoading();
-      sessionStorage.setItem(LOADING_KEY, '1');
-    }, LOADING_TIME);
+      sessionStorage.setItem('subcage_loaded_v2', '1');
+    }, LOADING_DURATION);
   } else {
     hideLoading();
   }
-
-  // Ensure video is muted to allow autoplay on mobile
-  if (loadingVideo) loadingVideo.muted = true;
 });
 
-function hideLoading() {
+function hideLoading(){
   const loadingScreen = document.getElementById('loading-screen');
-  const loadingVideo = document.getElementById('loading-video');
-  const mainContent = document.getElementById('main-content') || document.querySelector('main');
-
+  const mainContent = document.getElementById('main-content');
   if (loadingScreen) loadingScreen.style.display = 'none';
   if (mainContent) mainContent.classList.remove('hidden');
-
-  // pause and remove source to save bandwidth
-  if (loadingVideo) {
-    try {
-      loadingVideo.pause();
-      loadingVideo.removeAttribute('src');
-      loadingVideo.load();
-    } catch (e) {
-      // ignore
-    }
+  // pause loading video if present
+  const loadingVideo = document.getElementById('loading-video');
+  if (loadingVideo && !loadingVideo.paused) {
+    try{ loadingVideo.pause(); loadingVideo.currentTime = 0; } catch(e){}
   }
 }

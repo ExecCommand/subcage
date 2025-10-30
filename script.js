@@ -41,3 +41,13 @@ function hideLoading(){
     try{ loadingVideo.pause(); loadingVideo.currentTime = 0; } catch(e){}
   }
 }
+
+window.addEventListener('load', () => {
+    const loadingScreen = document.getElementById('loading-screen');
+    const mainContent = document.querySelector('.main-content');
+
+    setTimeout(() => {
+        loadingScreen.style.display = 'none';
+        mainContent.classList.remove('hidden');
+    }, 5000);
+});

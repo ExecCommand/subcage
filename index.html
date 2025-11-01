@@ -1,108 +1,68 @@
-!DOCTYPE html>
-<html lang="it">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SUBCAGE</title>
-
-  <!-- Google Fonts: Roboto Condensed (body) + Bebas Neue (titles/buttons) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
-
-  <!-- Main stylesheet -->
   <link rel="stylesheet" href="style.css">
-
-  <!-- Main script (deferred) -->
-  <script src="script.js" defer></script>
+  <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Loading screen: plays background video (silent, loop) on first visit -->
-  <div id="loading-screen" aria-hidden="false">
-    <video id="loading-video" class="loading-video" autoplay muted playsinline loop preload="auto">
+  <div id="loading-screen">
+    <video autoplay muted loop id="loading-video">
       <source src="https://res.cloudinary.com/dzvpg0h7y/video/upload/v1761818315/introduzione_sito_kh3kmp.mov" type="video/mp4">
     </video>
-
-    <div class="chains chains-front" aria-hidden="true"></div>
-    <img class="loading-logo" id="loading-logo" src="https://res.cloudinary.com/dzvpg0h7y/image/upload/v1761810001/logo_no_sfondo_utwyyy.png" alt="Subcage logo">
+    <img src="https://res.cloudinary.com/dzvpg0h7y/image/upload/v1761810001/logo_no_sfondo_utwyyy.png" alt="Logo" class="loading-logo">
   </div>
 
-  <!-- Main content (hidden until loading finishes) -->
-  <main id="main-content" class="hidden" role="main">
-    <!-- Header: logo centered horizontally at top -->
-    <header class="site-header">
-      <img class="main-logo" src="https://res.cloudinary.com/dzvpg0h7y/image/upload/v1761810001/logo_no_sfondo_utwyyy.png" alt="Subcage logo">
-    </header>
+  <header>
+    <img src="https://res.cloudinary.com/dzvpg0h7y/image/upload/v1761810001/logo_no_sfondo_utwyyy.png" alt="SUBCAGE Logo" class="logo">
+  </header>
 
-    <!-- Event block -->
-    <section class="evento" aria-labelledby="prossimo-evento">
-      <h1 id="prossimo-evento" class="evento-title">PROSSIMO EVENTO</h1>
-      <h2 class="evento-name">SUBCAGE // HARD RITUAL</h2>
-
-      <!-- Iscrizione: replace href when ready -->
-      <a href="#" class="evento-btn interactive" role="button">ISCRIVITI</a>
-
-      <p class="evento-note">More info</p>
+  <main>
+    <section class="event">
+      <h1 class="event-title">NEXT EVENT: IN THE CAGE</h1>
+      <a href="#" class="join-btn">JOIN NOW</a>
     </section>
 
-    <!-- Videos section with titles above each video -->
-    <section class="videos-section" aria-label="Video section">
-      <h3 class="videos-section-title">LAST RITUALS</h3>
+    <section class="videos">
+      <h2 class="section-title">VIDEOS</h2>
 
-      <div class="videos" aria-label="Video list">
-        <div class="video-card interactive">
-          <div class="video-title">SUBCAGE - IN THE CAGE presenta BRTOsuono</div>
-          <div class="video-box">
-            <iframe src="https://www.youtube.com/embed/GSyqxI52BUc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Video 1"></iframe>
-          </div>
-        </div>
-
-        <div class="video-card interactive">
-          <div class="video-title">SUBCAGE - IN THE CAGE presenta TECNICO</div>
-          <div class="video-box">
-            <iframe src="https://www.youtube.com/embed/-d84Swr65d0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Video 2"></iframe>
-          </div>
-        </div>
-
-        <div class="video-card interactive">
-          <div class="video-title">SUBCAGE - IN THE CAGE presenta KEVIN COSTA</div>
-          <div class="video-box">
-            <iframe src="https://www.youtube.com/embed/HXW7j3NYYKA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Video 3"></iframe>
-          </div>
-        </div>
-
-        <div class="video-card interactive">
-          <div class="video-title">SUBCAGE - IN THE CAGE presenta ENURSLI</div>
-          <div class="video-box">
-            <iframe src="https://www.youtube.com/watch?v=qN8RkkqZSsQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Video 2"></iframe>
-          </div>
-        </div>
+      <div class="video-card">
+        <h3 class="video-title">SUBCAGE - IN THE CAGE presenta BRTOsuono</h3>
+        <iframe src="https://www.youtube.com/embed/GSyqxI52BUc" allowfullscreen></iframe>
+      </div>
+      <div class="video-card">
+        <h3 class="video-title">SUBCAGE - IN THE CAGE presenta BRTOsuono</h3>
+        <iframe src="https://www.youtube.com/embed/-d84Swr65d0" allowfullscreen></iframe>
+      </div>
+      <div class="video-card">
+        <h3 class="video-title">SUBCAGE - IN THE CAGE presenta KEVIN COSTA</h3>
+        <iframe src="https://www.youtube.com/embed/HXW7j3NYYKA" allowfullscreen></iframe>
+      </div>
+      <div class="video-card">
+        <h3 class="video-title">SUBCAGE - IN THE CAGE presenta ENURSLI</h3>
+        <iframe src="https://www.youtube.com/embed/qN8RkkqZSsQ" allowfullscreen></iframe>
       </div>
     </section>
 
-    <!-- Contacts -->
-    <section class="contacts" aria-label="Contatti">
-      <a class="contact-btn interactive" href="https://www.youtube.com/@subcagesecrets" target="_blank" rel="noopener">YOUTUBE</a>
-      <a class="contact-btn interactive" href="https://www.instagram.com/subcagesecret/" target="_blank" rel="noopener">INSTAGRAM</a>
-      <a class="contact-btn interactive" href="mailto:Subcagesecret@gmail.com">BOOKING</a>
+    <section class="contacts">
+      <a href="https://www.youtube.com/@subcagesecrets" class="social-btn" target="_blank">YOUTUBE</a>
+      <a href="https://www.instagram.com/subcagesecret/" class="social-btn" target="_blank">INSTAGRAM</a>
+      <a href="mailto:Subcagesecret@gmail.com" class="social-btn">CONTACT</a>
     </section>
 
-    <!-- Our history (regolamento text smaller) -->
-    <section class="regolamento" aria-labelledby="our-history">
-      <h3 id="our-history" class="history-title">OUR HISTORY</h3>
-      <p class="history-text">
-        SUBCAGE nasce per portare quello che manca nel nostro territorio,
-        “SUB” = sotto “CAGE” = gabbia, abbiamo scelto questo nome perché siamo una subcultura di persone che protegge e difende dei valori che molto spesso si perdono portando anche innovazione.
-        È un evento che si tiene una volta al mese promuovendo e dando forza agli artisti del territorio emergenti e non, per far accrescere la vera cultura techno che si respira a Berlino, così da difendere sia la musica che i veri principi di rispetto e convivenza tra luogo e pubblico.
-        La serietà musicale è una delle nostre migliori qualità: Techno Raw, Hypnotik, Hardgroove e un pizzico di Hard, i bassi movimentati e profondi con ritmi audaci e calzanti.
-      </p>
+    <section class="history">
+      <h2>OUR HISTORY</h2>
+      <p>SUBCAGE nasce per portare quello che manca nel nostro territorio, “SUB” = sotto “CAGE” = gabbia, abbiamo scelto questo nome perché siamo una subcultura di persone che protegge e difende dei valori che molto spesso si perdono portando anche innovazione. è un evento che si tiene una volta al mese promuovendo e dando forza a gli artisti del territorio emergenti e non, per far accrescere la vera cultura techno che si respira a berlino, cosi da difendere sia la musica che i veri principi di rispetto e convivenza tra luogo e pubblico. La serietà musicale e una delle nostre migliori qualità: Techno Raw, Hypnotik, Hardgroove e un pizzico di Hard, i bassi movimentati e profondi con ritmi audaci e calzanti.</p>
     </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-      <p>powered by @emanuele.meneghetti</p>
-    </footer>
   </main>
+
+  <footer>
+    <p>powered by @emanuele.meneghetti</p>
+  </footer>
 </body>
+</html>
 </html>
 
